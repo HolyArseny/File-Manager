@@ -1,9 +1,9 @@
-import os from 'os';
+import { homedir } from 'os';
 
-const homedir = os.homedir();
+const homeDirectory = homedir();
 
 export default () => {
   const currentPath = process.cwd();
-  if (currentPath === homedir) return;
+  if (currentPath === homeDirectory) return;
   process.chdir('../');
 };

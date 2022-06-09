@@ -1,4 +1,5 @@
 import readline from 'readline';
+import { homedir } from 'os';
 import getArgs from './utils/getArgs.js';
 import getUserNameFromArgs from './utils/getUserNameFromArgs.js';
 import user from './state/user.js';
@@ -41,8 +42,10 @@ const registerUser = () => {
 };
 
 const startCli = () => {
-  registerUser();
+  const homeDirectory = homedir();
+  process.chdir(homeDirectory);
 
+  registerUser();
   const username = user.getName();
   printMessage(greeting(username));
 
