@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { inputError, executionError } from '../messages/index.js';
 
+
 const commandMap = {};
 
 const __filename = fileURLToPath(import.meta.url);

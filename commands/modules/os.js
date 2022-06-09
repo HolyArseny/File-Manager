@@ -6,27 +6,27 @@ const getCpuInfo = () => {
   const cpuInfo = cpuData.map(({ model, speed }, index) =>
     `${index + 1}. Model: ${model}. Clock rate: ${speed}.\n`
   ).join('');
-  const dataToPrint = `\nTotal amount: ${length}.\n${cpuInfo}\n`;
+  const dataToPrint = `\nTotal amount: ${length}.\n${cpuInfo}`;
   console.log(dataToPrint);
 };
 
 const getEOL = () => {
-  const msg = `\ndefault system End-Of-Line: ${JSON.stringify(EOL)}\n`;
+  const msg = `\ndefault system End-Of-Line: ${JSON.stringify(EOL)}`;
   console.log(msg);
 };
 
 const getHomedir = () => {
-  const msg = `\nHome directory: ${homedir()}\n`;
+  const msg = `\nHome directory: ${homedir()}`;
   console.log(msg);
 };
 const getUsername = () => {
   const { username } = userInfo();
-  const msg = `\nCurrent user: ${username}\n`;
+  const msg = `\nCurrent user: ${username}`;
   console.log(msg);
 };
 
 const getArch = () => {
-  const msg = `\nCPU architecture: ${arch()}\n`;
+  const msg = `\nCPU architecture: ${arch()}`;
   console.log(msg);
 };
 
