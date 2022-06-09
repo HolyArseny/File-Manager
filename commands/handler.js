@@ -3,14 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { inputError, executionError } from '../messages/index.js';
 
-const commandMap = {
-  mv: () => { console.log('Inputed command: mv') },
-  rm: () => { console.log('Inputed command: rm') },
-  os: () => { console.log('Inputed command: os') },
-  hash: () => { console.log('Inputed command: hash') },
-  compress: () => { console.log('Inputed command: compress') },
-  decompress: () => { console.log('Inputed command: decompress') },
-};
+const commandMap = {};
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
