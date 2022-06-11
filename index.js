@@ -24,7 +24,10 @@ const endWork = (username) => {
 
 const enterCommand = async (input, username) => {
   if (input === '.exit') return endWork(username);
-  const userInput = input.split(' ');
+
+  const { USER_INPUT_SPLIT } = process.env;
+  const userInput = input.split(USER_INPUT_SPLIT);
+
   try {
     await commandHandler(userInput);
   } catch (error) {
@@ -41,10 +44,15 @@ const registerUser = () => {
   user.setName(userName);
 };
 
-const startCli = () => {
+const setHomeDir = () => {
   const homeDirectory = homedir();
   process.chdir(homeDirectory);
+};
 
+const startCli = () => {
+  process.env['USER_INPUT_SPLIT'] = ' ';
+
+  setHomeDir();
   registerUser();
   const username = user.getName();
   printMessage(greeting(username));

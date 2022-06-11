@@ -1,9 +1,7 @@
-import { homedir } from 'os';
-
-const homeDirectory = homedir();
+import { sep } from 'path';
+import isRootDir from '../../utils/isRootDir.js';
 
 export default () => {
-  const currentPath = process.cwd();
-  if (currentPath === homeDirectory) return;
-  process.chdir('../');
+  if (isRootDir().status) return;
+  process.chdir(`..${sep}`);
 };

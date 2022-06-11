@@ -1,11 +1,12 @@
-import { homedir } from 'os';
 import { join } from 'path';
+import isRootDir from '../../utils/isRootDir.js';
 
-const homeDirectory = homedir();
-
-export default ([commandValue]) => {
+export default (commandValue) => {
+  const { USER_INPUT_SPLIT } = process.env;
+  const path = commandValue.join(USER_INPUT_SPLIT);
   const currentPath = process.cwd();
-  const nextPath = join(currentPath, commandValue);
-  if (!nextPath.includes(homeDirectory)) throw Error;
-  process.chdir(commandValue);
+  const nextPath = join(currentPath, path);
+  if (!nextPath.includes(isRootDir().root)) throw Error;
+
+  process.chdir(path);
 };
