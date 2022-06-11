@@ -1,4 +1,4 @@
-import { writeFile } from 'fs/promises';
+import { createWriteStream } from 'fs';
 import { join } from 'path';
 
 export default async ([commandValue]) => {
@@ -6,5 +6,6 @@ export default async ([commandValue]) => {
   const listFromPath = commandValue.split('/');
   const [lastItem] = listFromPath.slice(-1);
   const filePath = join(currentDir, lastItem);
-  await writeFile(filePath, '');
+  const tempFile = await createWriteStream(filePath);
+  await tempFile.write('');
 };

@@ -1,12 +1,19 @@
 import { createBrotliCompress } from 'zlib';
 import { createReadStream, createWriteStream } from 'fs';
+import { pipeline } from 'stream/promises';
+import getDirectionPath from '../../utils/getDirectionPath.js';
 
 export default async ([filePath, pathTo]) => {
-  const input = await createReadStream(filePath);
+  const directionPath = getDirectionPath([filePath, pathTo]);
+  const input = createReadStream(filePath);
   const compress = createBrotliCompress();
-  const output = await createWriteStream(pathTo);
+  const output = createWriteStream(directionPath + '.br');
   try {
-    input.pipe(compress).pipe(output);
+    await pipeline(
+      input,
+      compress,
+      output
+    );
   } catch (e) {
     throw e;
   }

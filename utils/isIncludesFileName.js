@@ -1,5 +1,6 @@
 export default ([filePath, newPath]) => {
-  const [fileName] = filePath.split('/');
+  const splitedFilePath = filePath.split('/');
+  const [fileName] = splitedFilePath.slice(-1);
   const isIncludesFileName = newPath.includes(fileName);
   return { status: isIncludesFileName, fileName };
 };
